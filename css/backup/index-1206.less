@@ -1,0 +1,105 @@
+@import "reset.min.css";
+@import "animate.min.css";
+@import "swiper.min.css";
+
+html {
+  font-size: 100px; /*640PX：1REM=100PX*/
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: #F4F4F4;
+}
+
+.mainBox {
+  margin: 0 auto;
+  max-width: 640px;
+  height: 100%;
+  background: #FFF;
+  overflow: hidden;
+}
+
+.loadingBox, .phoneBox, .messageBox, .cubeBox, .detailBox {
+  display: none;
+  position: relative; //=>让当前区域中的后代元素都相对于本区域定位
+  height: 100%;
+  overflow: hidden;
+}
+
+/*--LOADING--*/
+.loadingBox {
+  background: #000;
+
+  .title {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: unit((-1.4/2)+(-1.5), rem);
+    width: 100%;
+    height: 1.4rem;
+
+    text-align: center;
+    color: #FFF;
+    letter-spacing: .04rem;
+
+    h1 {
+      line-height: .75rem;
+      font-size: .5rem;
+    }
+
+    h2 {
+      margin-top: .2rem;
+      line-height: .45rem;
+      font-size: .26rem;
+    }
+  }
+
+  .progress {
+    @w: 4.6;
+    @h: .3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: unit(-@w/2, rem);
+    margin-top: unit((-@h/2)+1, rem);
+    width: unit(@w, rem);
+    height: unit(@h, rem);
+    background: #FFF;
+    border-radius: unit(@h/2, rem); //=>圆角值是高度一半:左右是圆的,上下是直的
+
+    .run {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: unit(@h, rem);
+      border-radius: unit(@h/2, rem);
+
+      transition: .3s; //=>在JS中控制WIDTH变化的时候有一个些许的动画
+
+      background: -webkit-linear-gradient(left bottom, #5CB85C 0%, #5CB85C 25%, #74C274 25%, #74C274 50%, #5CB85C 50%, #5CB85C 75%, #74C274 75%, #74C274 100%);
+      background-size: unit(@h, rem) unit(@h, rem);
+      animation: loadingMove .5s linear infinite both;
+    }
+  }
+}
+
+@keyframes loadingMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 -.3rem;
+  }
+}
+
+/*
+ * 移动端开发的时候，我们使用的大部分CSS3样式属性，都需要写两套：
+ *  -webkit-xxx:
+ *  xxx:
+ *
+ * 加前缀的一定要在前面,不加前缀的在后面(顺序不能乱),只有这样才能适配基本的IOS和安卓系统
+ *
+ * transition、animation、@keyframes、transform、gradient、flex..
+*/
