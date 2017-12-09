@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <style>
+        .swiper-container, .swiper-slide{
+            height:100px;
+            text-align:center;
+            font-size: 40px;
+        }
+        .swiper-slide{
+            line-height:100px;
+        }
+        .swiper-slide:nth-child(odd){
+            background: lightblue;
+
+        }
+        .swiper-slide:nth-child(even){
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">1</div>
+        <div class="swiper-slide">2</div>
+        <div class="swiper-slide">3</div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-pagination"></div>
+<!--    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>-->
+
+
+</div>
+
+
+<script src="js/zepto.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script>
+
+new Swiper('.swiper-container',{
+    loop:true,
+    autoplay:2000,
+    autoplayDisableOnInteraction:false,
+    pagination:".swiper-pagination",
+    pag: '.swiper-scrollbar',
+    effect:'coverflow'
+
+});
+</script>
+</body>
+</html>
